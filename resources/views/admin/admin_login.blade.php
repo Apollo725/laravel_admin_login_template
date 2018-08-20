@@ -38,12 +38,25 @@
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
+        
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
                     <div class="text-center p-t-20 p-b-20">
                         <span class="db"><img src="{{ asset('backend_assets/assets/images/logo-3tarek.png') }}" alt="logo" /></span>
                     </div>
+                    @if(Session::has('flash_message_error'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{!! session('flash_message_error') !!}</strong>
+                        </div>
+                    @endif
+                    @if(Session::has('flash_message_success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{!! session('flash_message_success') !!}</strong>
+                        </div>
+                    @endif
                     <!-- Form -->
                     <form class="form-horizontal m-t-20" id="loginform" method="post" action="{{ url('admin') }}">{{ csrf_field() }}
                         <div class="row p-b-30">
